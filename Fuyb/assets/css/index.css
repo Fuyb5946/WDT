@@ -1,0 +1,59 @@
+/*
+BOXES
+ */
+body {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+#headbar {
+    background-color: #111;
+    width: auto;
+    min-height: 64px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: auto;
+    padding-right: auto;
+    border: 0px;
+    box-sizing: border-box;
+}
+
+#name {
+    left: 110px;
+    position: absolute;
+    top: 0px;
+    margin: 0px;
+
+}
+
+#primaryContainer {
+    width: 800px;
+    position: relative;
+    margin: auto;
+}
+
+#avatar {
+    position: relative;
+    top: -50px;
+}
+
+#footer {
+    width: 300px;
+    position: relative;
+    margin: auto;
+    text-align: auto;
+}
+.circle {
+    -webkit-border-radius: 50em;
+    -moz-border-radius: 50em;
+    -o-border-radius: 50em;
+    border-radius: 50em;
+}
+
+/*
+FONTS
+ */
+h1, h2, h3, h4, h5, h6, span {
+    font-family: sans-serif;
+}
