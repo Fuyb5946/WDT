@@ -39,10 +39,12 @@ body {
 }
 
 #footer {
-    width: 300px;
+    width: auto;
+    min-width: 250px;
+    max-width: 330px;
     position: relative;
     margin: auto;
-    text-align: auto;
+    text-align: middle;
 }
 .circle {
     -webkit-border-radius: 50em;
@@ -51,6 +53,56 @@ body {
     border-radius: 50em;
 }
 
+#navhead {
+    border-bottom-color: rgb(233, 233, 233);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: rgb(34, 34, 34);
+    cursor: default;
+    display: block;
+    font-family: arial, 'Hiragino Sans GB', 'Microsoft Yahei', 微软雅黑, 宋体, 宋体, Tahoma, Arial, Helvetica, STHeiti;
+    font-size: 12px;
+    height: 43px;
+    padding-left: 20px;
+    text-align: left;
+    width: 791px;
+}
+
+.navc {
+    color: rgb(34, 34, 34);
+    cursor: default;
+    display: block;
+    font-family: arial, 'Hiragino Sans GB', 'Microsoft Yahei', 微软雅黑, 宋体, 宋体, Tahoma, Arial, Helvetica, STHeiti;
+    font-size: 12px;
+    height: 318px;
+    text-align: left;
+    width: 800px;
+}
+
+.navhead-item {
+    color: rgb(34, 34, 34);
+    cursor: auto;
+    display: inline-block;
+    font-family: arial, 'Hiragino Sans GB', 'Microsoft Yahei', 微软雅黑, 宋体, 宋体, Tahoma, Arial, Helvetica, STHeiti;
+    font-size: 14px;
+    height: 41px;
+    line-height: 44px;
+    outline-color: rgb(34, 34, 34);
+    outline-style: none;
+    outline-width: 0px;
+    text-align: center;
+    text-decoration: none;
+    width: 66px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #FFF;
+    font-weight: bold;
+    position: relative;
+}
+
+.navhead-item:hover {
+    border-bottom-color: rgb(66, 161, 255);
+}
 /*
 FONTS
  */
