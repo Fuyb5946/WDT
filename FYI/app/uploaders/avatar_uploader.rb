@@ -1,0 +1,74 @@
+# encoding: utf-8
+
+class AvatarUploader < CarrierWave::Uploader::Base
+
+  # Include RMagick or MiniMagick support:
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+
+  CarrierWave.configure do |config|
+    config.storage = :grid_fs
+    config.root = Rails.root.join('tmp')
+    config.cache_dir = "uploads"
+    config.grid_fs_access_url = "/systems/uploads"
+  end
+
+  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
+  # include Sprockets::Helpers::RailsHelper
+  # include Sprockets::Helpers::IsolatedHelper
+
+  # Choose what kind of storage to use for this uploader:
+  storage :file
+  # storage :fog
+
+  # Override the directory where uploaded files will be stored.
+  # This is a sensible default for uploaders that are meant to be mounted:
+  def store_dir
+    "#{user.class.to_s.underscore}/#{mounted_as}/#{user.id}"
+  end
+
+  # Provide a default URL as a default if there hasn't been a file uploaded:
+   def default_url
+     # For Rails 3.1+ asset pipeline compatibility:
+     # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  
+     "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+   end
+
+  # Process files as they are uploaded:
+  # process :scale => [200, 300]
+  #
+  # def scale(width, height)
+  #   # do something
+  # end
+
+  # Create different versions of your uploaded files:
+  version :normal do
+    process :resize_to_fill => [48, 48]
+  end
+
+  version :small do
+    process :resize_to_fill => [16, 16]
+  end
+
+  version :large do
+    process :resize_to_fill => [64, 64]
+  end
+
+  version :big do
+    process :resize_to_fill => [120, 120]
+  end
+
+  # Add a white list of extensions which are allowed to be uploaded.
+  # For images you might use something like this:
+   def extension_white_list
+     %w(jpg jpeg gif png)
+   end
+
+  # Override the filename of the uploaded files:
+  # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # def filename
+  #   "something.jpg" if original_filename
+  # end
+
+end

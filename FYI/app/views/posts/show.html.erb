@@ -1,0 +1,32 @@
+<h3><%= @post.title %></h3>
+
+<p>
+  <%= @post.body %>
+</p>
+
+<div class="pull-right">
+  <%= @post.author.email if @post.author %>,
+  <%= action_links %>
+</div>
+
+<h3>Reply (<%= @post.replies_count %>):</h3>
+<ul>
+  <% @post.replies.each do |reply| %>
+  <li>
+  <% if !reply.ifAnms? %>
+    <strong><%= reply.author.try(:email)%>:</strong>
+  <% end %>
+  <% if reply.ifAnms? %>
+    <strong><%= "Anonymous(" + reply.author.try(:current_sign_in_ip) + ")"%>:</strong>
+  <% end %>
+    <%= reply.body %>
+  </li>
+  <% end -%>
+</ul>
+
+<%= form_for Reply.new, url: reply_post_path do |f| %>
+  <%= f.text_field :body,placeholder:"Comment here..." , autofocus: true, class: "form-control" %>
+  <br />
+  <%= f.check_box :ifAnonymous %>
+  <%= f.submit  class: 'btn btn-primary'%>
+<% end -%>
